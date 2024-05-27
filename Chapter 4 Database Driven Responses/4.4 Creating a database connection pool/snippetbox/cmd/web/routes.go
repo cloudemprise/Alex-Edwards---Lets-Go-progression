@@ -1,0 +1,26 @@
+package main
+
+/*
+Alex Edwards : Let's Go
+
+Chapter 3 Configuration and Error Handling
+
+Section 3.5 Isolating application routes
+*/
+
+import "net/http"
+
+// The routes() method returns a servemux containing our application routes.
+func (app *application) routes() *http.ServeMux {
+
+	mux := http.NewServeMux()
+
+	fileServer := http.FileServer(http.Dir("./ui/static/"))
+	mux.Handle("/static/", http.StripPrefix("/static", fileServer))
+
+	mux.HandleFunc("/", app.home)
+	mux.HandleFunc("/snippet/view", app.snippetView)
+	mux.HandleFunc("/snippet/create", app.snippetCreate)
+
+	return mux
+}

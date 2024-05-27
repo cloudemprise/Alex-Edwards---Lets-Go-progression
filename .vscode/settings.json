@@ -1,6 +1,8 @@
 {
     "cSpell.words": [
         "alexedwards",
+        "httprouter",
+        "postgresstore",
         "resultset",
         "servemux",
         "snippetbox",
